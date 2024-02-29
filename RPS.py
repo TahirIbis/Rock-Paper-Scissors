@@ -2,7 +2,7 @@ import random
 
 def get_user_choice():
     while True:
-        user_choice = input("Choose rock, paper, or scissors: ").lower()
+        user_choice = input("Choose rock, paper, or scissors: ").strip().lower()
         if user_choice in ['rock', 'paper', 'scissors']:
             return user_choice
         else:
@@ -21,12 +21,21 @@ def determine_winner(user_choice, computer_choice):
     else:
         return "Computer wins!"
 
-def play_game():
-    print("Let's play Rock, Paper, Scissors!")
+def play_round():
     user_choice = get_user_choice()
     computer_choice = get_computer_choice()
     print("You chose:", user_choice)
     print("Computer chose:", computer_choice)
     print(determine_winner(user_choice, computer_choice))
 
+def play_game():
+    print("Let's play Rock, Paper, Scissors!")
+    while True:
+        play_round()
+        play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+        if play_again != 'yes':
+            break
+    print("Thanks for playing!")
+
 play_game()
+
